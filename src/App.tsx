@@ -9,63 +9,69 @@ import Projects from './pages/Projects';
 import Login from './pages/Login';
 import './styles/index.css';
 
-const App = () => {
-  const location = useLocation(); // Correct hook name
+const AppContent = () => {
+  const location = useLocation();
 
   return (
+    <AnimatePresence mode="wait">
+      <Routes location={location} key={location.pathname}>
+        <Route
+          path="/"
+          element={
+            <Layout>
+              <Home />
+            </Layout>
+          }
+        />
+        <Route
+          path="/about"
+          element={
+            <Layout>
+              <About />
+            </Layout>
+          }
+        />
+        <Route
+          path="/contact"
+          element={
+            <Layout>
+              <Contact />
+            </Layout>
+          }
+        />
+        <Route
+          path="/blog"
+          element={
+            <Layout>
+              <Blog />
+            </Layout>
+          }
+        />
+        <Route
+          path="/projects"
+          element={
+            <Layout>
+              <Projects />
+            </Layout>
+          }
+        />
+        <Route
+          path="/login"
+          element={
+            <Layout>
+              <Login />
+            </Layout>
+          }
+        />
+      </Routes>
+    </AnimatePresence>
+  );
+};
+
+const App = () => {
+  return (
     <Router>
-      <AnimatePresence mode="wait">
-        <Routes location={location} key={location.pathname}>
-          <Route
-            path="/"
-            element={
-              <Layout>
-                <Home />
-              </Layout>
-            }
-          />
-          <Route
-            path="/about"
-            element={
-              <Layout>
-                <About />
-              </Layout>
-            }
-          />
-          <Route
-            path="/contact"
-            element={
-              <Layout>
-                <Contact />
-              </Layout>
-            }
-          />
-          <Route
-            path="/blog"
-            element={
-              <Layout>
-                <Blog />
-              </Layout>
-            }
-          />
-          <Route
-            path="/projects"
-            element={
-              <Layout>
-                <Projects />
-              </Layout>
-            }
-          />
-          <Route
-            path="/login"
-            element={
-              <Layout>
-                <Login />
-              </Layout>
-            }
-          />
-        </Routes>
-      </AnimatePresence>
+      <AppContent />
     </Router>
   );
 };

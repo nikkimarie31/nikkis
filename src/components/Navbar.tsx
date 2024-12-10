@@ -19,42 +19,54 @@ const Navbar = () => {
                 className={`lg:flex space-x-4 mt-4 lg:mt-0 ${isOpen ? 'block' : 'hidden'}`}>
                 <li>
                     <NavLink to='/' className={({ isActive }) =>
-                        isActive ? 'text-gray-300' : 'hover:text-gray-300'}
+                        `px-4 py-2 hover:text-gray-300 transition-colors duration-300 ease-in-out ${isActive ? "text-gray-300 font-bold" : "text-neon-green"
+                        }`
+                    }
                     >
                         Home
                     </NavLink>
                 </li>
                 <li>
                     <NavLink to='/about' className={({ isActive }) =>
-                        isActive ? 'text-gray-300' : 'hover:text-gray-300'}
+                        `px-4 py-2 hover:text-gray-300 transition-colors duration-300 ease-in-out ${isActive ? "text-gray-300 font-bold" : "text-neon-green"
+                        }`
+                    }
                     >
                         About
                     </NavLink>
                 </li>
                 <li>
                     <NavLink to='/contact' className={({ isActive }) =>
-                        isActive ? 'text-gray-300' : 'hover:text-gray-300'}
+                        `px-4 py-2 hover:text-gray-300 transition-colors duration-300 ease-in-out ${isActive ? "text-gray-300 font-bold" : "text-neon-green"
+                        }`
+                    }
                     >
                         Contact
                     </NavLink>
                 </li>
                 <li>
                     <NavLink to='/blog' className={({ isActive }) =>
-                        isActive ? 'text-gray-300' : 'hover:text-gray-300'}
+                        `px-4 py-2 hover:text-gray-300 transition-colors duration-300 ease-in-out ${isActive ? "text-gray-300 font-bold" : "text-neon-green"
+                        }`
+                    }
                     >
                         Blog
                     </NavLink>
                 </li>
                 <li>
                     <NavLink to='/projects' className={({ isActive }) =>
-                        isActive ? 'text-gray-300' : 'hover:text-gray-300'}
+                        `px-4 py-2 hover:text-gray-300 transition-colors duration-300 ease-in-out ${isActive ? "text-gray-300 font-bold" : "text-neon-green"
+                        }`
+                    }
                     >
                         Projects
                     </NavLink>
                 </li>
                 <li>
                     <NavLink to='/login' className={({ isActive }) =>
-                        isActive ? 'text-gray-300' : 'hover:text-gray-300'}
+                        `px-4 py-2 hover:text-gray-300 transition-colors duration-300 ease-in-out ${isActive ? "text-gray-300 font-bold" : "text-neon-green"
+                        }`
+                    }
                     >
                         Login
                     </NavLink>

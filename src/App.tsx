@@ -8,7 +8,7 @@ import Blog from './pages/Blog';
 import Projects from './pages/Projects';
 import Login from './pages/Login';
 import './styles/index.css';
-import Blogpost from './pages/BlogPost';
+import BlogPost from './pages/BlogPost';
 
 const AppContent = () => {
   const location = useLocation();
@@ -64,7 +64,7 @@ const AppContent = () => {
             </Layout>
           }
         />
-         <Route path="/blog/:slug" element={<Layout><BlogPost /></Layout>} />
+        <Route path="/blog/:slug" element={<Layout><BlogPost /></Layout>} />
       </Routes>
     </AnimatePresence>
   );

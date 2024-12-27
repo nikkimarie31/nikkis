@@ -2,15 +2,22 @@
   "version": 2,
   "builds": [
     {
-      "src": "package.json",
-      "use": "@vercel/static-build",
-      "config": { "distDir": "dist" }
+      "src": "server.js",
+      "use": "@vercel/node"
+    },
+    {
+      "src": "dist/**/*",
+      "use": "@vercel/static"
     }
   ],
   "routes": [
     {
+      "src": "/api/(.*)",
+      "dest": "/server.js"
+    },
+    {
       "src": "/(.*)",
-      "dest": "/index.html"
+      "dest": "/dist/$1"
     }
   ],
   "headers": [
@@ -19,7 +26,7 @@
       "headers": [
         {
           "key": "Content-Security-Policy",
-          "value": "default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self';"
+          "value": "default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self';"
         },
         {
           "key": "Cache-Control",

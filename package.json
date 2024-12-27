@@ -1,18 +1,16 @@
 {
-  
   "name": "nik-portfolio",
   "private": true,
   "version": "0.0.0",
   "type": "module",
   "main": "dist/index.js",
-  "module": "dist/index.js",
   "scripts": {
     "dev": "vite",
     "build": "tsc -b && vite build",
     "lint": "eslint .",
     "preview": "vite preview"
   },
-    "dependencies": {
+  "dependencies": {
     "autoprefixer": "^10.4.20",
     "framer-motion": "^11.13.1",
     "postcss": "^8.4.49",
@@ -31,7 +29,6 @@
     "eslint-plugin-react-refresh": "^0.4.14",
     "globals": "^15.12.0",
     "typescript": "^5.7.2",
-    "typescript-eslint": "^8.15.0",
     "vite": "^6.0.5"
   }
 }

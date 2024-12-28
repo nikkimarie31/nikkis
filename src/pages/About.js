@@ -1,0 +1,5 @@
+import { jsx as _jsx, jsxs as _jsxs } from "react/jsx-runtime";
+const About = () => {
+    return (_jsx("main", { className: "px-4 py-8 bg-gray-900 text-neon-green", children: _jsxs("section", { className: "max-w-3xl mx-auto", children: [_jsx("h1", { className: "text-3xl sm:text-4xl font-bold mb-6 text-center", children: "About Me" }), _jsx("p", { className: "text-lg leading-relaxed mb-6", children: "Hi, I'm Nikki a full-stack web developer with a passion for building modern, responsive, and interactive applications. My favorite tools include React, TypeScript, and Tailwind CSS, and I love tackling complex problems with creative solutions." }), _jsx("h2", { className: "text-2xl font-bold mb-4", children: "Skills" }), _jsxs("ul", { className: "list-disc pl-6", children: [_jsx("li", { children: "React & TypeScript" }), _jsx("li", { children: "Responsive Web Design" }), _jsx("li", { children: "Node.js & Express" }), _jsx("li", { children: "Version Control with Git" })] })] }) }));
+};
+export default About;

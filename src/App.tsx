@@ -1,4 +1,4 @@
-import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route, useLocation, Navigate } from 'react-router-dom';
 import { AnimatePresence } from 'framer-motion';
 import Layout from './components/Layout';
 import Home from './pages/Home';
@@ -7,8 +7,10 @@ import Contact from './pages/Contact';
 import Blog from './pages/Blog';
 import Projects from './pages/Projects';
 import Login from './pages/Login';
-import './styles/index.css';
 import BlogPost from './pages/BlogPost';
+import NotFound from './pages/NotFound';
+import './styles/index.css';
+
 
 const AppContent = () => {
   const location = useLocation();
@@ -65,6 +67,8 @@ const AppContent = () => {
           }
         />
         <Route path="/blog/:slug" element={<Layout><BlogPost /></Layout>} />
+        {/** Handle 404 pages */}
+        <Route path="*" element={ <Layout><NotFound /> </Layout> } />
       </Routes>
     </AnimatePresence>
   );

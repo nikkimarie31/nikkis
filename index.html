@@ -1,23 +1,29 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta http-equiv="Content-Security-Policy"content="default-src'self'; 
-      script-src 'self'; 
-      style-src 'self'; 
-      img-src 'self'; 
-      font-src 'self'; 
-      connect-src 'self'; 
-      frame-ancestors 'none';" />
-    <meta name="theme-color" content="#000000" />
-    <link rel="icon" href="/favicon.ico" />
-    <title>In My Opinion</title>
-  </head>
-  <body>
-    <div id="root">
-      <noscript>Please enable JavaScript to use this application.</noscript>
-    </div>
-    <script type="module" src="/src/main.js"></script>
-  </body>
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="Content-Security-Policy" 
+        content="default-src 'self'; 
+                 script-src 'self'; 
+                 style-src 'self' https://fonts.googleapis.com 'unsafe-inline'; 
+                 font-src 'self' https://fonts.gstatic.com; 
+                 img-src 'self' data:; 
+                 connect-src 'self'; 
+                 frame-ancestors 'none';" />
+  <meta name="theme-color" content="#000000" />
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@3.3.0/dist/tailwind.min.css" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet" />
+  <link rel="icon" href="/favicon.ico" />
+  <title>In My Opinion</title>
+</head>
+
+<body class="bg-darkGray text-white font-roboto">
+  <div id="root">
+    <noscript>Please enable JavaScript to use this application.</noscript>
+  </div>
+  <script type="module" src="/src/main.tsx"></script>
+</body>
+
 </html>

@@ -13,11 +13,13 @@ export default {
       spacing: {
         '128': '32rem',
       },
+     
     },
   },
   plugins: [
     require('@tailwindcss/typography'),
     require('@tailwindcss/forms'),
     require('@tailwindcss/aspect-ratio'),
+
   ],
 };

@@ -6,6 +6,10 @@ export default {
       colors: {
         neonGreen: '#39ff14',
         darkGray: '#1a1a1a',
+        gray: {
+          800: '#2d2d2d',
+          900: '#1a1a1a',
+        },
       },
       fontFamily: {
         sans: ['Roboto', 'sans-serif'],

@@ -1,48 +1,40 @@
 import { useParams, Link } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 
-// Define the type for a blog post
 type BlogPost = {
   slug: string;
   title: string;
+  date: string;
+  author: string;
+  tags: string[];
+  readTime: string;
+  summary: string;
   content: string;
+ 
 };
 
 const BlogPost = () => {
-  const { slug } = useParams(); // Get slug from URL
-  const [post, setPost] = useState<BlogPost | null>(null); // State for the post
-  const [error, setError] = useState<string | null>(null); // State for error handling
+  const { slug } = useParams();
+  const [post, setPost] = useState<BlogPost | null>(null);
+  const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
-    // Fetch data from posts.json
     fetch('/posts.json')
       .then((response) => {
-        if (!response.ok) {
-          throw new Error('Network response was not ok');
-        }
+        if (!response.ok) throw new Error('Failed to load posts.');
         return response.json();
       })
       .then((data: BlogPost[]) => {
-        const foundPost = data.find((p: BlogPost) => p.slug === slug);
-        if (!foundPost) {
-          throw new Error('Post not found');
-        }
-        setPost(foundPost); // Save post in state
-        setError(null); // Clear errors if successful
+        const foundPost = data.find((p) => p.slug === slug);
+        if (!foundPost) throw new Error('Post not found.');
+        setPost(foundPost);
+        setError(null);
       })
-      .catch((error) => {
-        console.error('Error fetching post:', error);
-        setError('Failed to load blog post.');
-      });
+      .catch((err) => setError(err.message));
   }, [slug]);
 
-  if (error) {
-    return <div className="text-center text-neonGreen">{error}</div>;
-  }
-
-  if (!post) {
-    return <div className="text-center text-neonGreen">Loading blog post...</div>;
-  }
+  if (error) return <div className="text-center text-neonGreen">{error}</div>;
+  if (!post) return <div className="text-center text-neonGreen">Loading blog post...</div>;
 
   return (
     <main className="bg-gray-900 text-neonGreen px-4 py-8">
@@ -50,11 +42,19 @@ const BlogPost = () => {
         <Link to="/blog" className="text-gray-400 hover:text-neonGreen underline mb-4 block">
           ← Back to Blog
         </Link>
-        <h1 className="text-4xl font-bold mb-6 neon-title">{post.title}</h1>
-        <div
-          className="prose prose-lg prose-invert"
-          dangerouslySetInnerHTML={{ __html: post.content }}
-        />
+        
+        <h1 className="text-4xl font-bold mb-2">{post.title}</h1>
+        <p className="text-sm text-gray-400 mb-4">
+          {post.date} • {post.readTime} • {post.author}
+        </p>
+        <div className="prose prose-lg prose-invert" dangerouslySetInnerHTML={{ __html: post.content }} />
+        <div className="mt-4">
+          {post.tags.map((tag) => (
+            <span key={tag} className="bg-gray-700 text-neonGreen px-2 py-1 rounded-full text-sm mr-2">
+              #{tag}
+            </span>
+          ))}
+        </div>
       </section>
     </main>
   );

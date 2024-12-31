@@ -42,14 +42,7 @@ const AppContent = () => {
             </Layout>
           }
         />
-        <Route
-          path="/blog"
-          element={
-            <Layout>
-              <Blog />
-            </Layout>
-          }
-        />
+
         <Route
           path="/projects"
           element={
@@ -66,7 +59,9 @@ const AppContent = () => {
             </Layout>
           }
         />
-        <Route path="/blog/:slug" element={<Layout><BlogPost /></Layout>} />
+<Route path="/blog" element={<Layout><Blog /></Layout>} />
+<Route path="/blog/:slug" element={<Layout><BlogPost /></Layout>} />
+
         {/** Handle 404 pages */}
         <Route path="*" element={ <Layout><NotFound /> </Layout> } />
       </Routes>

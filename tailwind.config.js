@@ -20,6 +20,6 @@ export default {
     require('@tailwindcss/typography'),
     require('@tailwindcss/forms'),
     require('@tailwindcss/aspect-ratio'),
-
+    require('tailwindcss-debug-screens'),
   ],
 };

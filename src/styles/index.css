@@ -2,28 +2,33 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Global Styling */
 body {
-   background-color: theme('colors.darkGray');
-   color: theme('colors.white');
+   @apply bg-darkGray text-neonGreen font-sans;
 }
 
+/* Neon Glow Effect */
 .glow {
     text-shadow: 0 0 10px #39ff14, 0 0 20px #39ff14, 0 0 30px #39ff14;
 }
 
-article {
-    line-height: 1.75;
-}
-
-h1 {
-    @apply text-neonGreen text-5xl font-bold text-center mt-10;
-    text-shadow: 0 0 10px #39ff14, 0 0 20px #39ff14, 0 0 30px #39ff14;
-}
-
+/* Neon Title */
 .neon-title {
     color: #39ff14;
     font-size: 4rem;
     font-weight: bold;
     text-align: center;
-    text-shadow: 0 0 5px #39ff14, 0 0 10px #39ff14, 0 0 40px #00ff80, 0 0 80px #00ff80;
+    text-shadow: 0 0 5px #39ff14, 0 0 15px #39ff14, 0 0 20px #00ff80;
+}
+
+
+/* Article Styling */
+.article-style {
+    @apply leading-relaxed text-base;
+}
+
+/* Specific Element Styling */
+h1 {
+    @apply text-neonGreen text-5xl font-bold text-center mt-10;
+    text-shadow: 0 0 10px #39ff14, 0 0 20px #39ff14, 0 0 30px #39ff14;
 }

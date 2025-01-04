@@ -4,6 +4,7 @@
 
 /* Global Styling */
 body {
+    background-color: #121212;
    @apply bg-darkGray text-neonGreen font-sans;
 }
 

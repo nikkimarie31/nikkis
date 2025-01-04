@@ -1,5 +1,8 @@
 import { useParams, Link } from 'react-router-dom';
 import { useEffect, useState } from 'react';
+import ReactMarkdown from 'react-markdown';
+import remarkGfm from 'remark-gfm'; // For GitHub-flavored markdown (optional)
+import rehypeRaw from 'rehype-raw'; // To allow raw HTML if needed
 
 type BlogPost = {
   slug: string;
@@ -10,7 +13,6 @@ type BlogPost = {
   readTime: string;
   summary: string;
   content: string;
- 
 };
 
 const BlogPost = () => {
@@ -47,7 +49,15 @@ const BlogPost = () => {
         <p className="text-sm text-gray-400 mb-4">
           {post.date} • {post.readTime} • {post.author}
         </p>
-        <div className="prose prose-lg prose-invert" dangerouslySetInnerHTML={{ __html: post.content }} />
+        
+        <article className="prose prose-lg prose-invert">
+          <ReactMarkdown
+            children={post.content}
+            remarkPlugins={[remarkGfm]} // GitHub-flavored markdown
+            rehypePlugins={[rehypeRaw]} // Optional: allows raw HTML
+          />
+        </article>
+        
         <div className="mt-4">
           {post.tags.map((tag) => (
             <span key={tag} className="bg-gray-700 text-neonGreen px-2 py-1 rounded-full text-sm mr-2">

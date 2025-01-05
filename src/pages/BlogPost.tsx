@@ -2,7 +2,6 @@ import { useParams, Link } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import ReactMarkdown from 'react-markdown';
 import remarkGfm from 'remark-gfm'; // For GitHub-flavored markdown (optional)
-import rehypeRaw from 'rehype-raw'; // To allow raw HTML if needed
 
 type BlogPost = {
   slug: string;
@@ -51,11 +50,7 @@ const BlogPost = () => {
         </p>
         
         <article className="prose prose-lg prose-invert">
-          <ReactMarkdown
-            children={post.content}
-            remarkPlugins={[remarkGfm]} // GitHub-flavored markdown
-            rehypePlugins={[rehypeRaw]} // Optional: allows raw HTML
-          />
+          <ReactMarkdown remarkPlugins={[remarkGfm]}>{post.content}</ReactMarkdown>
         </article>
         
         <div className="mt-4">

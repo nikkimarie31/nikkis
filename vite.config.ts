@@ -1,13 +1,14 @@
 import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
+import { fileURLToPath } from 'url';
 import path from 'path';
+
+// Simulate __dirname
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 export default defineConfig({
   plugins: [react()],
-  build: {
-    outDir: 'dist',
-    minify: 'esbuild', // Default optimizer
-  },
   resolve: {
     alias: {
       '@': path.resolve(__dirname, './src'), // Shorten import paths
@@ -17,3 +18,4 @@ export default defineConfig({
     port: 3000, // Specify port for dev server
   },
 });
+

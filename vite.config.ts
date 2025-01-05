@@ -14,6 +14,9 @@ export default defineConfig({
       '@': path.resolve(__dirname, './src'), // Shorten import paths
     },
   },
+  css: {
+    postcss: './postcss.config.js',
+  },
   server: {
     fs: {
       strict: false,

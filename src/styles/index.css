@@ -6,6 +6,8 @@
 body {
     background-color: #121212;
    @apply bg-darkGray text-neonGreen font-sans;
+   -webkit-text-size-adjust: 100%;
+   text-size-adjust: 100%;
 }
 
 /* Neon Glow Effect */

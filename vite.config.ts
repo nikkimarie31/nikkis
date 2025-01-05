@@ -15,7 +15,17 @@ export default defineConfig({
     },
   },
   server: {
-    port: 3000, // Specify port for dev server
+    fs: {
+      strict: false,
+    },
+ 
   },
+  build: {
+    rollupOptions: {
+      output: {
+        manualChunks: undefined,
+      }
+    }
+  }
 });
 

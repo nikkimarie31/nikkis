@@ -7,6 +7,8 @@ import Contact from './pages/Contact';
 import Blog from './pages/Blog';
 import Projects from './pages/Projects';
 import Login from './pages/Login';
+import Signup from './pages/Signup';
+import ResetPassword from './pages/ResetPassword';
 import BlogPost from './pages/BlogPost';
 import NotFound from './pages/NotFound';
 import './styles/index.css';
@@ -56,6 +58,22 @@ const AppContent = () => {
           element={
             <Layout>
               <Login />
+            </Layout>
+          }
+        />
+         <Route
+          path="/signup"
+          element={
+            <Layout>
+              <Signup />
+            </Layout>
+          }
+        />
+              <Route
+          path="/reset-password"
+          element={
+            <Layout>
+              <ResetPassword />
             </Layout>
           }
         />

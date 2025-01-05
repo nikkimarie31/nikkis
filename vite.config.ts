@@ -24,8 +24,9 @@ export default defineConfig({
     rollupOptions: {
       output: {
         manualChunks: undefined,
-      }
-    }
-  }
+      },
+    },
+  },
+  base: '/',
 });
 

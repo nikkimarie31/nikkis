@@ -2,36 +2,46 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Global Styling */
 body {
-    background-color: #121212;
-   @apply bg-darkGray text-neonGreen font-sans;
-   -webkit-text-size-adjust: 100%;
-   text-size-adjust: 100%;
+  @apply bg-darkGray text-neonGreen font-sans;
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+  transition: background-color 0.3s, color 0.3s;
 }
 
-/* Neon Glow Effect */
-.glow {
-    text-shadow: 0 0 10px #39ff14, 0 0 20px #39ff14, 0 0 30px #39ff14;
-}
-
-/* Neon Title */
 .neon-title {
-    color: #39ff14;
-    font-size: 4rem;
-    font-weight: bold;
-    text-align: center;
-    text-shadow: 0 0 5px #39ff14, 0 0 15px #39ff14, 0 0 20px #00ff80;
+  text-shadow: 0 0 10px #39ff14, 0 0 20px #39ff14, 0 0 30px #39ff14;
 }
 
-
-/* Article Styling */
-.article-style {
-    @apply leading-relaxed text-base;
+.dark {
+  --tw-bg-opacity: 1;
+  background-color: rgba(34, 34, 34, var(--tw-bg-opacity));
+  color: #ffffff;
 }
 
-/* Specific Element Styling */
-h1 {
-    @apply text-neonGreen text-5xl font-bold text-center mt-10;
-    text-shadow: 0 0 10px #39ff14, 0 0 20px #39ff14, 0 0 30px #39ff14;
+.dark .text-neonGreen {
+  color: #00ff80;
+}
+
+.dark .bg-darkGray {
+  background-color: #222;
+}
+
+/* Category Menu Styling */
+button {
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+button:hover {
+  transform: scale(1.05);
+}
+
+button.bg-neonGreen {
+  background-color: #39ff14;
+  color: #121212;
+}
+
+button.bg-gray-800 {
+  background-color: #333333;
+  color: #ffffff;
 }

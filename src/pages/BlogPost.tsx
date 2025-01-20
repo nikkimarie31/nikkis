@@ -1,7 +1,9 @@
 import { useParams, Link } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import ReactMarkdown from 'react-markdown';
-import remarkGfm from 'remark-gfm'; // For GitHub-flavored markdown (optional)
+import remarkGfm from 'remark-gfm'; 
+import { motion } from 'framer-motion';
+
 
 type BlogPost = {
   slug: string;
@@ -38,14 +40,18 @@ const BlogPost = () => {
   if (!post) return <div className="text-center text-neonGreen">Loading blog post...</div>;
 
   return (
-    <main className="bg-gray-900 text-neonGreen px-4 py-8">
-      <section className="max-w-4xl mx-auto">
+    <motion.main
+      initial={{ opacity: 0, y: 50 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.5 }}
+      className="bg-gray-900 text-neonGreen px-4 py-8"
+    >
+      <section className="max-w-5xl mx-auto">
         <Link to="/blog" className="text-gray-400 hover:text-neonGreen underline mb-4 block">
           ← Back to Blog
         </Link>
-        
         <h1 className="text-4xl font-bold mb-2">{post.title}</h1>
-        <p className="text-sm text-gray-400 mb-4">
+        <p className="text-sm text-gray-400 mb-6">
           {post.date} • {post.readTime} • {post.author}
         </p>
         
@@ -53,15 +59,15 @@ const BlogPost = () => {
           <ReactMarkdown remarkPlugins={[remarkGfm]}>{post.content}</ReactMarkdown>
         </article>
         
-        <div className="mt-4">
+        <div className="mt-8">
           {post.tags.map((tag) => (
-            <span key={tag} className="bg-gray-700 text-neonGreen px-2 py-1 rounded-full text-sm mr-2">
+            <span key={tag} className="bg-gray-700 text-neonGreen px-3 py-1 rounded-full text-sm mr-2">
               #{tag}
             </span>
           ))}
         </div>
       </section>
-    </main>
+    </motion.main>
   );
 };
 

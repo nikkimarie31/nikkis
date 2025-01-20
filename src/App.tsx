@@ -1,4 +1,4 @@
-import { BrowserRouter as Router, Routes, Route, useLocation, Navigate } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
 import { AnimatePresence } from 'framer-motion';
 import Layout from './components/Layout';
 import Home from './pages/Home';
@@ -11,8 +11,8 @@ import Signup from './pages/Signup';
 import ResetPassword from './pages/ResetPassword';
 import BlogPost from './pages/BlogPost';
 import NotFound from './pages/NotFound';
+import LandingPage from './pages/LandingPage';
 import './styles/index.css';
-
 
 const AppContent = () => {
   const location = useLocation();
@@ -20,8 +20,12 @@ const AppContent = () => {
   return (
     <AnimatePresence mode="wait">
       <Routes location={location} key={location.pathname}>
+        {/* Set Menu as the default landing page */}
+        <Route path="/" element={<LandingPage />} />
+        
+        {/* Update Home to /home */}
         <Route
-          path="/"
+          path="/home"
           element={
             <Layout>
               <Home />
@@ -44,7 +48,6 @@ const AppContent = () => {
             </Layout>
           }
         />
-
         <Route
           path="/projects"
           element={
@@ -61,7 +64,7 @@ const AppContent = () => {
             </Layout>
           }
         />
-         <Route
+        <Route
           path="/signup"
           element={
             <Layout>
@@ -69,7 +72,7 @@ const AppContent = () => {
             </Layout>
           }
         />
-              <Route
+        <Route
           path="/reset-password"
           element={
             <Layout>
@@ -77,11 +80,9 @@ const AppContent = () => {
             </Layout>
           }
         />
-<Route path="/blog" element={<Layout><Blog /></Layout>} />
-<Route path="/blog/:slug" element={<Layout><BlogPost /></Layout>} />
-
-        {/** Handle 404 pages */}
-        <Route path="*" element={ <Layout><NotFound /> </Layout> } />
+        <Route path="/blog" element={<Layout><Blog /></Layout>} />
+        <Route path="/blog/:slug" element={<Layout><BlogPost /></Layout>} />
+        <Route path="*" element={<Layout><NotFound /></Layout>} />
       </Routes>
     </AnimatePresence>
   );

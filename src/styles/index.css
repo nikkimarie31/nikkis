@@ -2,34 +2,42 @@
 @tailwind components;
 @tailwind utilities;
 
-body {
-  @apply bg-darkGray text-neonGreen font-sans;
+/* Base Styles */
+html, body {
+  @apply font-sans transition-all duration-300;
   -webkit-text-size-adjust: 100%;
   text-size-adjust: 100%;
-  transition: background-color 0.3s, color 0.3s;
 }
 
-.neon-title {
-  text-shadow: 0 0 10px #39ff14, 0 0 20px #39ff14, 0 0 30px #39ff14;
+/* Light Mode */
+body.light {
+  @apply bg-white text-gray-900 !important; /* White background with dark text */
 }
 
-.dark {
-  --tw-bg-opacity: 1;
-  background-color: rgba(34, 34, 34, var(--tw-bg-opacity));
-  color: #ffffff;
+body.light .text-neonGreen {
+  color: #008f47 !important; /* Slightly darker green for contrast */
 }
 
-.dark .text-neonGreen {
-  color: #00ff80;
+body.light .bg-darkGray {
+  background-color: #d4d4d4 !important; /* Lighter gray background */
 }
 
-.dark .bg-darkGray {
-  background-color: #222;
+/* Dark Mode */
+body.dark {
+  @apply bg-gray-900 text-white !important; /* Dark background with white text */
+}
+
+body.dark .text-neonGreen {
+  color: #39ff14 !important; /* Restore neon green */
+}
+
+body.dark .bg-darkGray {
+  background-color: #2a2a2a !important;
 }
 
 /* Category Menu Styling */
 button {
-  transition: background-color 0.3s ease, color 0.3s ease;
+  @apply px-4 py-2 rounded-lg font-medium transition-all duration-300;
 }
 
 button:hover {
@@ -44,4 +52,50 @@ button.bg-neonGreen {
 button.bg-gray-800 {
   background-color: #333333;
   color: #ffffff;
+}
+
+button.active {
+  @apply bg-neonGreen text-darkGray font-bold;
+  box-shadow: 0 0 10px #39ff14;
+  transform: scale(1.1);
+}
+
+/* Blog Cards */
+.blog-card {
+  background-color: #2a2a2a !important; /* Ensure it stays dark */
+  border: 1px solid #39ff14;
+  border-radius: 10px;
+  padding: 1.5rem;
+  margin: 0 auto;
+  max-width: 600px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.blog-card:hover {
+  transform: scale(1.05);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.4);
+}
+
+.blog-card h2 {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #39ff14;
+  margin-bottom: 0.5rem;
+}
+
+.blog-card p {
+  font-size: 1rem;
+  color: #d3d3d3;
+  line-height: 1.5;
+  margin-bottom: 1rem;
+}
+
+/* Blog Card Container */
+.blog-card-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.5rem;
+  padding: 2rem 1rem;
 }

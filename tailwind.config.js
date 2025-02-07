@@ -2,8 +2,26 @@
 export default {
   darkMode: 'class',
   content: ['./index.html', './src/**/*.{js,ts,jsx,tsx,html}'],
+  safelist: [
+    'bg-neonGreen', 'text-darkGray',
+    'dark:bg-gray-900',
+    'text-neonGreen',
+    'bg-gray-800',
+  ],
   theme: {
+    container: {
+      center: true,
+      padding: '2rem',
+    },
     extend: {
+      screens: {
+        xs: '480px',
+        sm: '640px',
+        md: '768px',
+        lg: '1024px',
+        xl: '1280px',
+        '2xl': '1536px',
+      },
       colors: {
         neonGreen: '#39ff14',
         darkGray: '#1a1a1a',
@@ -18,7 +36,7 @@ export default {
       spacing: {
         '128': '32rem',
       },
-     
+
     },
   },
   plugins: [

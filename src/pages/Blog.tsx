@@ -25,7 +25,11 @@ const Blog = () => {
         return response.json();
       })
       .then((data: BlogPost[]) => {
-        setPosts(data);
+        // Sort posts by date (newest first)
+        const sortedPosts = [...data].sort(
+          (a, b) => new Date(b.date).getTime() - new Date(a.date).getTime()
+        );
+        setPosts(sortedPosts);
         setError(null);
       })
       .catch((err) => setError(err.message));
@@ -33,9 +37,14 @@ const Blog = () => {
 
   const categories = Array.from(new Set(posts.map((post) => post.category)));
 
+  // Filter posts based on selected category
   const filteredPosts = selectedCategory
     ? posts.filter((post) => post.category === selectedCategory)
     : posts;
+
+  // Set the most recent post as featured and the rest as regular posts
+  const featuredPost = filteredPosts.length > 0 ? filteredPosts[0] : null;
+  const remainingPosts = filteredPosts.slice(1);
 
   if (error) return <div className="text-center text-neonGreen">{error}</div>;
   if (!posts.length) return <div className="text-center text-neonGreen">Loading blog posts...</div>;
@@ -46,7 +55,7 @@ const Blog = () => {
         <h1 className="text-4xl font-bold mb-6 text-center">Blog</h1>
 
         {/* Category Menu */}
-        <div className="flex gap-4 mb-8 justify-center">
+        <div className="flex flex-wrap gap-4 mb-8 justify-center">
           <button
             onClick={() => setSelectedCategory(null)}
             className={`px-4 py-2 rounded-lg ${
@@ -69,46 +78,46 @@ const Blog = () => {
         </div>
 
         {/* Featured Post */}
-        {filteredPosts.length > 0 && (
+        {featuredPost && selectedCategory === null && (
           <div className="mb-10">
             <h2 className="text-3xl font-bold mb-4">Featured Post</h2>
-            <div className="bg-darkGray p-6 rounded-lg shadow-xl hover:shadow-2xl transition-shadow">
-              <h3 className="text-2xl font-semibold">{filteredPosts[0]?.title}</h3>
-              <p className="text-sm text-gray-400">
-                {filteredPosts[0]?.date} • {filteredPosts[0]?.readTime} • {filteredPosts[0]?.author}
+            <div className="blog-card">
+              <h3 className="text-xl font-semibold">{featuredPost.title}</h3>
+              <p className="meta text-gray-400">
+                {featuredPost.date} • {featuredPost.readTime} • {featuredPost.author}
               </p>
-              <p className="mt-4 text-base">{filteredPosts[0]?.summary}</p>
-              <Link
-                to={`/blog/${filteredPosts[0]?.slug}`}
-                className="text-neonGreen underline mt-4 block"
-              >
+              <p className="mt-2">{featuredPost.summary}</p>
+              <Link to={`/blog/${featuredPost.slug}`} className="text-neonGreen underline mt-4 block">
                 Read More
               </Link>
             </div>
           </div>
         )}
 
-        {/* Blog Posts Grid */}
-        <ul className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-          {filteredPosts.slice(1).map((post) => (
-            <motion.li
+        {/* Blog Cards */}
+        <div className="blog-card-container">
+          {remainingPosts.map((post) => (
+            <motion.div
               key={post.slug}
               whileHover={{ scale: 1.05 }}
-              className="bg-darkGray rounded-lg overflow-hidden shadow-lg"
+              className="blog-card"
             >
-              <div className="p-4">
-                <h2 className="text-2xl font-bold mb-2">{post.title}</h2>
-                <p className="text-sm text-gray-400">
-                  {post.date} • {post.readTime} • {post.author}
-                </p>
-                <p className="text-base my-2">{post.summary}</p>
-                <Link to={`/blog/${post.slug}`} className="text-neonGreen underline hover:text-gray-300">
-                  Read More
-                </Link>
-              </div>
-            </motion.li>
+              <h2 className="text-xl font-semibold">{post.title}</h2>
+              <p className="meta text-gray-400">
+                {post.date} • {post.readTime} • {post.author}
+              </p>
+              <p className="mt-2">{post.summary}</p>
+              <Link to={`/blog/${post.slug}`} className="text-neonGreen underline">
+                Read More
+              </Link>
+            </motion.div>
           ))}
-        </ul>
+        </div>
+
+        {/* No Posts Found */}
+        {filteredPosts.length === 0 && (
+          <div className="text-center text-gray-400 mt-8">No posts found for this category.</div>
+        )}
       </section>
     </main>
   );

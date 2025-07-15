@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { motion } from 'framer-motion';
+import { Link } from 'react-router-dom';
 
 const Signup = () => {
   const [username, setUsername] = useState('');
@@ -30,26 +31,40 @@ const Signup = () => {
       initial={{ opacity: 0, y: 50 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.5 }}
-      className="min-h-screen bg-gray-900 flex items-center justify-center"
+      className="min-h-screen flex items-center justify-center px-4 py-8"
     >
-      <div className="bg-darkGray text-neonGreen p-8 rounded-lg shadow-lg max-w-md w-full">
-        <h1 className="text-3xl font-bold text-center mb-6">Sign Up</h1>
+      <motion.div
+        className="bg-white dark:bg-gray-800 p-8 rounded-xl shadow-lg max-w-md w-full border border-gray-200 dark:border-gray-700"
+        initial={{ opacity: 0, scale: 0.95 }}
+        animate={{ opacity: 1, scale: 1 }}
+        transition={{ duration: 0.5, delay: 0.1 }}
+      >
+        <h1 className="text-3xl font-bold text-center mb-6 text-gray-900 dark:text-white">
+          Sign Up
+        </h1>
+        
         {error && (
-          <div className="bg-red-600 text-white text-sm p-2 rounded mb-4">
+          <motion.div
+            className="bg-red-100 dark:bg-red-900 text-red-700 dark:text-red-200 text-sm p-3 rounded-lg mb-4 border border-red-200 dark:border-red-700"
+            initial={{ opacity: 0, x: -10 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.3 }}
+          >
             {error}
-          </div>
+          </motion.div>
         )}
-        <form className="space-y-4" onSubmit={handleSignup}>
+        
+        <form className="space-y-5" onSubmit={handleSignup}>
           {/* Username Field */}
           <div>
-            <label htmlFor="username" className="block text-sm font-medium">
+            <label htmlFor="username" className="form-label">
               Username
             </label>
             <input
               type="text"
               id="username"
               name="username"
-              className="mt-1 block w-full bg-gray-800 text-neonGreen border border-gray-700 rounded-md shadow-sm focus:ring-neonGreen focus:border-neonGreen"
+              className="form-input"
               placeholder="Enter your username"
               value={username}
               onChange={(e) => setUsername(e.target.value)}
@@ -59,14 +74,14 @@ const Signup = () => {
 
           {/* Email Field */}
           <div>
-            <label htmlFor="email" className="block text-sm font-medium">
+            <label htmlFor="email" className="form-label">
               Email Address
             </label>
             <input
               type="email"
               id="email"
               name="email"
-              className="mt-1 block w-full bg-gray-800 text-neonGreen border border-gray-700 rounded-md shadow-sm focus:ring-neonGreen focus:border-neonGreen"
+              className="form-input"
               placeholder="Enter your email"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
@@ -76,14 +91,14 @@ const Signup = () => {
 
           {/* Password Field */}
           <div>
-            <label htmlFor="password" className="block text-sm font-medium">
+            <label htmlFor="password" className="form-label">
               Password
             </label>
             <input
               type="password"
               id="password"
               name="password"
-              className="mt-1 block w-full bg-gray-800 text-neonGreen border border-gray-700 rounded-md shadow-sm focus:ring-neonGreen focus:border-neonGreen"
+              className="form-input"
               placeholder="Enter your password"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
@@ -92,14 +107,30 @@ const Signup = () => {
           </div>
 
           {/* Signup Button */}
-          <button
+          <motion.button
             type="submit"
-            className="w-full bg-neonGreen text-darkGray py-2 px-4 rounded-md font-bold hover:bg-gray-700 hover:text-neonGreen transition-all"
+            className="btn-primary w-full text-lg font-semibold py-3"
+            whileHover={{ scale: 1.02 }}
+            whileTap={{ scale: 0.98 }}
+            transition={{ duration: 0.2 }}
           >
-            Sign Up
-          </button>
+            Create Account
+          </motion.button>
         </form>
-      </div>
+
+        {/* Login Link */}
+        <div className="mt-6 text-center">
+          <p className="text-sm text-gray-600 dark:text-gray-400">
+            Already have an account?{' '}
+            <Link 
+              to="/login" 
+              className="font-medium text-babyBlue hover:opacity-80 transition-opacity duration-300"
+            >
+              Sign in here
+            </Link>
+          </p>
+        </div>
+      </motion.div>
     </motion.main>
   );
 };

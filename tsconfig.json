@@ -1,24 +1,47 @@
 {
   "compilerOptions": {
     "target": "ESNext",
+    "lib": ["DOM", "DOM.Iterable", "ES2022"],
     "module": "ESNext",
     "jsx": "react-jsx",
     "strict": true,
     "esModuleInterop": true,
     "skipLibCheck": true,
-    "moduleResolution": "node",
+    "moduleResolution": "bundler",
     "resolveJsonModule": true,
     "baseUrl": "./src",
     "paths": {
-      "@/*": ["*"]
+      "@/*": ["*"],
+      "@components/*": ["components/*"],
+      "@pages/*": ["pages/*"],
+      "@styles/*": ["styles/*"],
+      "@utils/*": ["utils/*"]
     },
     "types": ["vite/client"],
     "useDefineForClassFields": true,
+    
+    /* Strict Type Checking */
     "strictNullChecks": true,
     "noImplicitAny": true,
     "strictBindCallApply": true,
-    "alwaysStrict": true
+    "alwaysStrict": true,
+    "exactOptionalPropertyTypes": true,
+    
+    /* Additional Checks */
+    "forceConsistentCasingInFileNames": true,
+    "noImplicitReturns": true,
+    "noFallthroughCasesInSwitch": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "noPropertyAccessFromIndexSignature": true,
+    "noUncheckedIndexedAccess": true,
+    
+    /* Module Resolution */
+    "noEmit": true,
+    "allowImportingTsExtensions": true,
+    "allowSyntheticDefaultImports": true,
+    "isolatedModules": true
   },
-  "include": ["src", "types"], 
-  "exclude": ["node_modules"]
+  "include": ["src/**/*", "src/**/*.tsx", "src/**/*.ts"], 
+  "exclude": ["node_modules", "dist", "build"]
 }

@@ -1,5 +1,0 @@
-import { jsx as _jsx, jsxs as _jsxs } from "react/jsx-runtime";
-const Contact = () => {
-    return (_jsx("div", { className: "bg-gray-900 text-neon-green min-h-screen flex items-center justify-center px-4", children: _jsxs("form", { className: "bg-gray-800 p-6 rounded-lg w-full max-w-md mx-auto", children: [_jsx("h1", { className: "text-xl sm:text-2xl font-bold mb-4", children: "Get In Touch" }), _jsx("input", { type: "text", placeholder: "Your Name", className: "w-full p-3 mb-4 bg-gray-700 text-neon-green rounded text-sm sm:text-base" }), _jsx("input", { type: "email", placeholder: "Your Email", className: "w-full p-3 mb-4 bg-gray-700 text-neon-green rounded text-sm sm:text-base" }), _jsx("textarea", { placeholder: "Your Message", className: "w-full p-3 mb-4 bg-gray-700 text-neon-green rounded text-sm sm:text-base" }), _jsx("button", { type: "submit", className: "w-full bg-neon-green text-gray-900 py-2 rounded hover:shadow-lg max-w-sm mx-auto", children: "Send Message" })] }) }));
-};
-export default Contact;

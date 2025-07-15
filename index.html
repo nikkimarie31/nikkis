@@ -1,26 +1,66 @@
 <!doctype html>
 <html lang="en">
-
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta http-equiv="Content-Security-Policy" />
-  <!-- Sets the browser theme color for supported browsers like Chrome, Edge -->
-<meta name="theme-color" content="#121212" />
-
- <link rel="stylesheet" href="/src/styles/index.css" />
-
   
-  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet" />
+  <!-- SEO Meta Tags -->
+  <meta name="description" content="Nicole Eddy - Full Stack Web Developer & UX Designer. Crafting modern, interactive, and responsive web experiences that bring ideas to life." />
+  <meta name="keywords" content="Nicole Eddy, Full Stack Developer, UX Designer, Web Developer, React, TypeScript, Portfolio" />
+  <meta name="author" content="Nicole Eddy" />
+  
+  <!-- Open Graph / Social Media -->
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://inmyop1nion.com" />
+  <meta property="og:title" content="Nicole Eddy - Full Stack Web Developer & UX Designer" />
+  <meta property="og:description" content="Crafting modern, interactive, and responsive web experiences that bring ideas to life." />
+  <meta property="og:image" content="https://inmyop1nion.com/og-image.jpg" />
+  
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Nicole Eddy - Full Stack Web Developer & UX Designer" />
+  <meta name="twitter:description" content="Crafting modern, interactive, and responsive web experiences that bring ideas to life." />
+  <meta name="twitter:image" content="https://inmyop1nion.com/og-image.jpg" />
+  
+  <!-- Theme Colors for Different Modes -->
+  <meta name="theme-color" content="#89CFF0" media="(prefers-color-scheme: light)" />
+  <meta name="theme-color" content="#1a1a1a" media="(prefers-color-scheme: dark)" />
+  
+  <!-- Favicon -->
   <link rel="icon" href="/favicon.ico" />
-  <title>In My Opinion</title>
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+  
+  <!-- Fonts - Optimized Loading -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  
+  <!-- Stylesheets -->
+  <link rel="stylesheet" href="/src/styles/index.css" />
+  
+  <!-- Theme Detection Script - Prevents Flash -->
+  <script>
+    // Set theme immediately to prevent flash
+    const theme = localStorage.getItem('theme') || 
+                 (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+    if (theme === 'dark') {
+      document.documentElement.classList.add('dark');
+    }
+  </script>
+  
+  <title>In My Opinion - Nicole Eddy</title>
 </head>
 
-<body class="bg-darkGray text-white font-roboto">
+<body class="transition-colors duration-300">
   <div id="root">
-    <noscript>Please enable JavaScript to use this application.</noscript>
+    <noscript>
+      <div style="padding: 2rem; text-align: center; font-family: system-ui, sans-serif;">
+        <h1>JavaScript Required</h1>
+        <p>Please enable JavaScript to use this application.</p>
+        <p>This is a modern React application that requires JavaScript to function properly.</p>
+      </div>
+    </noscript>
   </div>
   <script type="module" src="/src/main.tsx"></script>
 </body>
-
 </html>

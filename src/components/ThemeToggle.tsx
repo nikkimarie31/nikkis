@@ -2,23 +2,32 @@ import { useEffect, useState } from "react";
 import { FaMoon, FaSun } from "react-icons/fa";
 
 const ThemeToggle = () => {
-  const [theme, setTheme] = useState(localStorage.getItem("theme") || "light");
+  const [isDark, setIsDark] = useState(() => {
+    // Check localStorage or default to light mode
+    if (typeof window !== 'undefined') {
+      return localStorage.getItem("theme") === "dark";
+    }
+    return false;
+  });
 
   useEffect(() => {
-    // Remove any existing theme class before applying the new one
-    document.body.classList.remove("light", "dark");
-    document.body.classList.add(theme);
-
-    // Save to localStorage so it persists
-    localStorage.setItem("theme", theme);
-  }, [theme]);
+    const html = document.documentElement;
+    
+    if (isDark) {
+      html.classList.add("dark");
+      localStorage.setItem("theme", "dark");
+    } else {
+      html.classList.remove("dark");
+      localStorage.setItem("theme", "light");
+    }
+  }, [isDark]);
 
   return (
     <button
-      onClick={() => setTheme(theme === "light" ? "dark" : "light")}
-      className="p-2 bg-gray-700 text-neonGreen rounded-full hover:bg-gray-500 transition-all"
+      onClick={() => setIsDark(!isDark)}
+      className="p-3 bg-gray-800 text-babyBlue rounded-full hover:bg-gray-700 transition-all duration-300 dark:bg-gray-700 dark:hover:bg-gray-600 border border-babyBlue/20"
     >
-      {theme === "light" ? <FaMoon /> : <FaSun />}
+      {isDark ? <FaSun className="w-5 h-5" /> : <FaMoon className="w-5 h-5" />}
     </button>
   );
 };

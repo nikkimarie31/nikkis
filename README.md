@@ -152,6 +152,6 @@ This project is open source and available under the [MIT License](LICENSE).
 
 ---
 
-**Built with ❤️ and lots of ☕ by Nicole Eddy
+**Built with ❤️ and lots of ☕ by Nicole Vallencourt
 
 *Crafting modern, interactive, and responsive web experiences that bring ideas to life.*

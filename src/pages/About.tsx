@@ -38,7 +38,7 @@ const About = () => {
           <div className="bg-white dark:bg-gray-800 rounded-xl p-8 shadow-lg border border-gray-200 dark:border-gray-700">
             <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-6 flex items-center">
               <span className="text-babyBlue mr-3">👋</span>
-              Hello, I'm Nicole
+              Hello, I'm Nicole Vallencourt
             </h2>
             <div className="space-y-4 text-gray-600 dark:text-gray-300 leading-relaxed">
               <p>
@@ -47,9 +47,7 @@ const About = () => {
                 for creating robust, scalable, and user-friendly applications.
               </p>
               <p>
-                I specialize in modern web technologies with a focus on the <strong className="text-babyBlue">MERN stack</strong> (MongoDB, Express, React, Node.js). 
-                I enjoy tackling complex problems and turning them into elegant, efficient solutions. Whether it's building responsive 
-                frontends with React or architecting backend APIs, I love every aspect of the development process.
+                As a newly married woman, I'm excited about this new chapter in my life while continuing to grow my career in tech. I recently graduated from <strong className="text-babyBlue">Nucamp's Full Stack Web Development and Mobile App Development bootcamp</strong>, where I mastered modern technologies including the MERN stack. I also completed an intensive <strong className="text-babyBlue">UX Design course with Merit America</strong>, which has given me a unique perspective on both the technical and design aspects of web development.
               </p>
               <p>
                 When I'm not coding, you can find me exploring new technologies, contributing to open-source projects, 

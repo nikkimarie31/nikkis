@@ -19,7 +19,7 @@ const Home = () => {
       link: '/projects'
     },
     {
-      title: 'Day-ja Merchandising',
+      title: 'Cross-Collab',
       description: 'Task management app for retail merchandising teams',
       tech: ['React Native', 'Firebase'],
       link: '/projects'
@@ -51,7 +51,7 @@ const Home = () => {
               Welcome to My <span className="text-babyBlue">Digital Portfolio</span>
             </h1>
             <p className="text-lg sm:text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto mb-8 leading-relaxed">
-              I'm Nicole Eddy, a passionate Full Stack Developer and UX Designer dedicated to crafting 
+              I'm Nicole Vallencourt, a passionate Full Stack Developer and UX Designer dedicated to crafting 
               modern, interactive, and responsive web experiences that bring ideas to life.
             </p>
             <motion.div 

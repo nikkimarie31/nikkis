@@ -23,3 +23,15 @@ dist-ssr
 *.sln
 *.sw?
 .vercel
+
+# Environment variables
+.env
+.env.*
+!.env.example
+!.env.local
+
+# Backend specific
+backend/.env
+backend/.env.*
+backend/node_modules
+backend/dist

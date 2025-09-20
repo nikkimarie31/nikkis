@@ -117,14 +117,6 @@ html:not(.dark) .hero::before {
 }
 
 /* Hero Heading */
-.neon-title {
-  text-shadow: 0 0 10px var(--baby-blue);
-}
-
-html:not(.dark) .neon-title {
-  @apply text-gray-900;
-  text-shadow: none;
-}
 
 .text-babyBlue {
   color: var(--baby-blue);

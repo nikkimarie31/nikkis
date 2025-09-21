@@ -176,7 +176,7 @@ class EmailService {
 export default async function handler(req: VercelRequest, res: VercelResponse) {
   // Set CORS headers
   res.setHeader('Access-Control-Allow-Origin', process.env.NODE_ENV === 'production'
-    ? 'https://inmyop1nion.com'
+    ? 'https://www.inmyop1nion.com'
     : '*'
   );
   res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS');

@@ -1,11 +1,5 @@
 {
   "version": 2,
-  "builds": [
-    {
-      "src": "api/contact.ts",
-      "use": "@vercel/node"
-    }
-  ],
   "rewrites": [
     { "source": "/api/(.*)", "destination": "/api/$1" },
     { "source": "/(.*)", "destination": "/" }
@@ -39,9 +33,6 @@
     }
   ],
   "trailingSlash": false,
-  "env": {
-    "NODE_ENV": "production"
-  },
   "functions": {
     "api/contact.ts": {
       "maxDuration": 30

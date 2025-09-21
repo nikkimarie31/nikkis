@@ -40,7 +40,7 @@ const Contact = () => {
 
     try {
       // Get API URL from environment or default to local development
-      const apiUrl = import.meta.env['VITE_API_URL'] || 'http://localhost:3001';
+      const apiUrl = import.meta.env['VITE_API_URL'] || window.location.origin;
 
       const response = await fetch(`${apiUrl}/api/contact`, {
         method: 'POST',

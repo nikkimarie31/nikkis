@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
+import NewsletterSignup from '../components/NewsletterSignup';
 
 type BlogPost = {
   slug: string;
@@ -319,19 +320,11 @@ const Blog = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.4 }}
           >
-            <h3 className="text-2xl font-bold mb-4 text-gray-900 dark:text-white">
-              Want to stay updated?
-            </h3>
-            <p className="text-gray-600 dark:text-gray-300 mb-6 max-w-md mx-auto">
-              Get notified when I publish new articles about web development and design.
-            </p>
-            <motion.button 
-              className="btn-primary text-lg font-semibold px-8 py-3"
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-            >
-              Subscribe to Newsletter
-            </motion.button>
+            <NewsletterSignup 
+              title="Want to stay updated?" 
+              description="Get notified when I publish new articles about web development and design." 
+              showName={false} 
+            />
           </motion.div>
         )}
       </section>

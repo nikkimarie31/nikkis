@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
+import NewsletterSignup from '../components/NewsletterSignup';
 
 const Home = () => {
   const skills = [
@@ -116,6 +117,17 @@ const Home = () => {
               </motion.div>
             ))}
           </div>
+        </div>
+      </section>
+
+      {/* Newsletter Signup Section */}
+      <section className="py-16">
+        <div className="max-w-4xl mx-auto px-4">
+          <NewsletterSignup 
+            title="Stay in the Loop!" 
+            description="Get updates about new blog posts, projects, and insights from my developer journey. No spam, just valuable content!" 
+            showName={true} 
+          />
         </div>
       </section>
 

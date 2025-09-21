@@ -50,6 +50,9 @@ const About = () => {
                 As a newly married woman, I'm excited about this new chapter in my life while continuing to grow my career in tech. I recently graduated from <strong className="text-babyBlue">Nucamp's Full Stack Web Development and Mobile App Development bootcamp</strong>, where I mastered modern technologies including the MERN stack. I also completed an intensive <strong className="text-babyBlue">UX Design course with Merit America</strong>, which has given me a unique perspective on both the technical and design aspects of web development.
               </p>
               <p>
+                My husband has been an incredible source of support throughout this journey. His unwavering belief in me and encouragement have been instrumental in helping me pursue my dreams in tech. I couldn't have achieved what I have without his love, patience, and understanding, especially during those late-night coding sessions and intense study periods. Having such a strong partnership makes every milestone even more meaningful.
+              </p>
+              <p>
                 When I'm not coding, you can find me exploring new technologies, contributing to open-source projects, 
                 or sharing knowledge with the developer community. I believe in writing clean, maintainable code and 
                 following best practices to deliver high-quality software.

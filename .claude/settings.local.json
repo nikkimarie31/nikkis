@@ -6,7 +6,10 @@
       "Bash(git push:*)",
       "Bash(git commit:*)",
       "Bash(curl:*)",
-      "Bash(find:*)"
+      "Bash(find:*)",
+      "Bash(npm install:*)",
+      "Bash(npm run build:*)",
+      "Bash(npx vercel dev:*)"
     ],
     "deny": [],
     "ask": []

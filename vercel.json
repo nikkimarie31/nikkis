@@ -34,7 +34,8 @@
   ],
   "trailingSlash": false,
   "functions": {
-    "api/contact.ts": {
+    "api/**/*.ts": {
+      "runtime": "nodejs20.x",
       "maxDuration": 30
     }
   }

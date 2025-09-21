@@ -1,29 +1,36 @@
 import { useState } from 'react';
 import { motion } from 'framer-motion';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
+import { useAuth } from '../contexts/AuthContext';
 
 const Login = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState<string | null>(null);
   const [rememberMe, setRememberMe] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
 
-  const handleLogin = (e: React.FormEvent) => {
+  const { login } = useAuth();
+  const navigate = useNavigate();
+
+  const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault();
-
-    // Simple dummy validation
-    if (!email || !password) {
-      setError('Please fill in both fields.');
-      return;
-    }
-
-    if (!/^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/.test(email)) {
-      setError('Please enter a valid email address.');
-      return;
-    }
-
+    setIsLoading(true);
     setError(null);
-    alert(`Welcome back, ${email}! (This is a frontend-only login page.)`);
+
+    try {
+      const result = await login(email, password);
+
+      if (result.success) {
+        navigate('/dashboard');
+      } else {
+        setError(result.message);
+      }
+    } catch (err) {
+      setError('An unexpected error occurred. Please try again.');
+    } finally {
+      setIsLoading(false);
+    }
   };
 
   return (
@@ -118,12 +125,13 @@ const Login = () => {
           {/* Login Button */}
           <motion.button
             type="submit"
-            className="btn-primary w-full text-lg font-semibold py-3"
-            whileHover={{ scale: 1.02 }}
-            whileTap={{ scale: 0.98 }}
+            disabled={isLoading}
+            className="btn-primary w-full text-lg font-semibold py-3 disabled:opacity-50 disabled:cursor-not-allowed"
+            whileHover={{ scale: isLoading ? 1 : 1.02 }}
+            whileTap={{ scale: isLoading ? 1 : 0.98 }}
             transition={{ duration: 0.2 }}
           >
-            Sign In
+            {isLoading ? 'Signing In...' : 'Sign In'}
           </motion.button>
         </form>
 
@@ -174,8 +182,8 @@ const Login = () => {
         <div className="text-center">
           <p className="text-sm text-gray-600 dark:text-gray-400">
             Don't have an account?{' '}
-            <Link 
-              to="/signup" 
+            <Link
+              to="/register"
               className="font-medium text-babyBlue hover:opacity-80 transition-opacity duration-300"
             >
               Create one here

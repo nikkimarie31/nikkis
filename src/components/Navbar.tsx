@@ -34,7 +34,7 @@ const Navbar = () => {
               to="/" 
               className="text-2xl font-bold text-gray-900 dark:text-white hover:text-babyBlue transition-colors duration-300"
             >
-              Nicole <span className="text-babyBlue">Eddy</span>
+              Nicole <span className="text-babyBlue">Vallencourt</span>
             </NavLink>
           </motion.div>
 

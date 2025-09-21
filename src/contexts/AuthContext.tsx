@@ -91,6 +91,8 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
 
   const register = async (name: string, email: string, password: string, writerType?: string): Promise<{ success: boolean; message: string }> => {
     try {
+      console.log('Attempting registration with:', { name, email, writerType, apiUrl: `${apiUrl}/api/auth/register` });
+
       const response = await fetch(`${apiUrl}/api/auth/register`, {
         method: 'POST',
         headers: {
@@ -99,7 +101,11 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
         body: JSON.stringify({ name, email, password, writerType }),
       });
 
+      console.log('Registration response status:', response.status);
+      console.log('Registration response headers:', Object.fromEntries(response.headers.entries()));
+
       const result = await response.json();
+      console.log('Registration response body:', result);
 
       if (response.ok && result.success) {
         setUser(result.user);
@@ -115,7 +121,8 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
       }
     } catch (error) {
       console.error('Registration error:', error);
-      return { success: false, message: 'Network error. Please try again.' };
+      const errorMessage = error instanceof Error ? error.message : 'Unknown error';
+      return { success: false, message: `Network error: ${errorMessage}. Please check if the API is running.` };
     }
   };
 

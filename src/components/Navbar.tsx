@@ -2,9 +2,11 @@ import { useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import ThemeToggle from './ThemeToggle';
+import { useAuth } from '../contexts/AuthContext';
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const { user, logout } = useAuth();
 
   const navItems = [
     { to: "/home", label: "Home" },
@@ -15,9 +17,12 @@ const Navbar = () => {
 
   ];
 
-  const authItems = [
-    { to: "/login", label: "Login" },
-    { to: "/signup", label: "Sign Up" },
+  const authItems = user ? [
+    { to: "/dashboard", label: "Dashboard", action: undefined },
+    { to: undefined, label: "Logout", action: "logout" },
+  ] : [
+    { to: "/login", label: "Login", action: undefined },
+    { to: "/register", label: "Register", action: undefined },
   ];
 
   return (
@@ -82,21 +87,37 @@ const Navbar = () => {
 
             {/* Auth Links */}
             <div className="flex items-center space-x-3">
-              {authItems.map((item) => (
-                <NavLink
-                  key={item.to}
-                  to={item.to}
-                  className={({ isActive }) =>
-                    `text-sm font-medium px-4 py-2 rounded-lg transition-all duration-300 ${
-                      item.to === '/signup'
-                        ? 'btn-primary text-sm py-2'
-                        : 'text-gray-700 dark:text-gray-300 hover:text-babyBlue'
-                    } ${isActive ? 'text-babyBlue' : ''}`
-                  }
-                >
-                  {item.label}
-                </NavLink>
-              ))}
+              {authItems.map((item) => {
+                if (item.action === 'logout') {
+                  return (
+                    <button
+                      key={item.action}
+                      onClick={logout}
+                      className="text-sm font-medium px-4 py-2 rounded-lg transition-all duration-300 text-gray-700 dark:text-gray-300 hover:text-babyBlue"
+                    >
+                      {item.label}
+                    </button>
+                  );
+                } else if (item.to) {
+                  return (
+                    <NavLink
+                      key={item.to}
+                      to={item.to}
+                      className={({ isActive }) =>
+                        `text-sm font-medium px-4 py-2 rounded-lg transition-all duration-300 ${
+                          item.to === '/register'
+                            ? 'btn-primary text-sm py-2'
+                            : 'text-gray-700 dark:text-gray-300 hover:text-babyBlue'
+                        } ${isActive ? 'text-babyBlue' : ''}`
+                      }
+                    >
+                      {item.label}
+                    </NavLink>
+                  );
+                } else {
+                  return null;
+                }
+              })}
             </div>
 
             {/* Theme Toggle */}
@@ -185,24 +206,40 @@ const Navbar = () => {
                 
               {/* Mobile Auth Links */}
               <div className="pt-4 mt-4 border-t border-gray-200 dark:border-gray-700 space-y-2">
-                {authItems.map((item) => (
-                  <NavLink
-                    key={item.to}
-                    to={item.to}
-                    onClick={() => setIsOpen(false)}
-                    className={({ isActive }) =>
-                      `block px-4 py-3 rounded-lg transition-all duration-300 ${
-                        item.to === '/signup'
-                          ? 'btn-primary text-center'
-                          : isActive
-                          ? 'bg-babyBlue/10 text-babyBlue'
-                          : 'text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 hover:text-babyBlue'
-                      }`
-                    }
-                  >
-                    {item.label}
-                  </NavLink>
-                ))}
+                {authItems.map((item) => {
+                  if (item.action === 'logout') {
+                    return (
+                      <button
+                        key={item.action}
+                        onClick={() => { logout(); setIsOpen(false); }}
+                        className="block w-full text-left px-4 py-3 rounded-lg transition-all duration-300 text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 hover:text-babyBlue"
+                      >
+                        {item.label}
+                      </button>
+                    );
+                  } else if (item.to) {
+                    return (
+                      <NavLink
+                        key={item.to}
+                        to={item.to}
+                        onClick={() => setIsOpen(false)}
+                        className={({ isActive }) =>
+                          `block px-4 py-3 rounded-lg transition-all duration-300 ${
+                            item.to === '/register'
+                              ? 'btn-primary text-center'
+                              : isActive
+                              ? 'bg-babyBlue/10 text-babyBlue'
+                              : 'text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 hover:text-babyBlue'
+                          }`
+                        }
+                      >
+                        {item.label}
+                      </NavLink>
+                    );
+                  } else {
+                    return null;
+                  }
+                })}
               </div>
             </motion.div>
           )}

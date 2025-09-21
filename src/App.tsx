@@ -1,4 +1,4 @@
-import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route, useLocation, Navigate } from 'react-router-dom';
 import { AnimatePresence } from 'framer-motion';
 import { AuthProvider } from './contexts/AuthContext';
 import Layout from './components/Layout';
@@ -13,7 +13,6 @@ import Dashboard from './pages/Dashboard';
 import WritePost from './pages/WritePost';
 import AdminDashboard from './pages/AdminDashboard';
 import Subscription from './pages/Subscription';
-import Signup from './pages/Signup';
 import ResetPassword from './pages/ResetPassword';
 import BlogPost from './pages/BlogPost';
 import NotFound from './pages/NotFound';
@@ -42,10 +41,11 @@ const AppContent = () => {
         <Route path="/write" element={<Layout><WritePost /></Layout>} />
         <Route path="/admin" element={<Layout><AdminDashboard /></Layout>} />
         <Route path="/subscription" element={<Layout><Subscription /></Layout>} />
-        <Route path="/signup" element={<Layout><Signup /></Layout>} />
         <Route path="/reset-password" element={<Layout><ResetPassword /></Layout>} />
-     
-        
+
+        {/* Redirect old signup URL to register */}
+        <Route path="/signup" element={<Navigate to="/register" replace />} />
+
         {/* 404 catch-all */}
         <Route path="*" element={<Layout><NotFound /></Layout>} />
       </Routes>
